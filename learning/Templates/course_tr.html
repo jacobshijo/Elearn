@@ -1,0 +1,136 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>My Courses</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 4 & Font Awesome -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Custom CSS -->
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f8f9fa;
+      padding-top: 40px;
+    }
+
+    .heading-section {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 30px;
+      color: #343a40;
+    }
+
+    .table thead th {
+      background-color: #343a40;
+      color: #fff;
+    }
+
+    .table tbody tr:hover {
+      background-color: transparent !important;
+    }
+
+    .btn-custom {
+      min-width: 100px;
+      margin: 5px;
+    }
+
+    /* Button colors */
+    .btn-add {
+      background-color: #28a745; /* Green */
+      color: white;
+    }
+
+    .btn-back {
+      background-color: #343a40; /* Dark */
+      color: white;
+    }
+
+    .btn-action {
+      background-color: #17a2b8; /* Cyan */
+      color: white;
+    }
+
+    .message {
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+
+<section class="container">
+  <div class="text-center">
+    <h2 class="heading-section">MY COURSES</h2>
+
+    {% if messages %}
+      <div class="message text-primary">
+        {% for msg in messages %}
+          {{ msg }}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+
+  {% if dd %}
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Course Name</th>
+            <th>Brief</th>
+            <th>Duration (days)</th>
+            <th>Fee</th>
+            <th>Language</th>
+            <th colspan="3" class="text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in dd %}
+          <tr>
+            <td>{{ i.cou_cat.Category_title }}</td>
+            <td>{{ i.Course_title }}</td>
+            <td>{{ i.Course_brief }}</td>
+            <td>{{ i.Course_duration }}</td>
+            <td>{{ i.Course_fee }}</td>
+            <td>{{ i.Language }}</td>
+            <td>
+              <button class="btn btn-sm btn-action btn-custom" onclick="location.href='{% url 'edit_course_tr' i.id %}'">Edit</button>
+            </td>
+            <td>
+              <button class="btn btn-sm btn-action btn-custom" onclick="location.href='{% url 'delete_course_tr' i.id %}'">Delete</button>
+            </td>
+            <td>
+              <button class="btn btn-sm btn-action btn-custom" onclick="location.href='{% url 'chapter_tr' i.id %}'">Chapters</button>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <h5 class="text-center text-primary">No courses added</h5>
+  {% endif %}
+
+  <div class="text-center mt-4">
+    <button class="btn btn-add btn-custom" onclick="location.href='{% url 'add_course_tr' %}'">Add</button>
+    <button class="btn btn-back btn-custom" onclick="location.href='{% url 'teacher_home' %}'">Back</button>
+  </div>
+</section>
+
+<!-- JS -->
+<script src="{% static 'tabble/js/jquery.min.js' %}"></script>
+<script src="{% static 'tabble/js/popper.js' %}"></script>
+<script src="{% static 'tabble/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'tabble/js/main.js' %}"></script>
+
+</body>
+</html>

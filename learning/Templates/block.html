@@ -1,0 +1,426 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Admin Home</title>
+    <meta
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+      name="viewport"
+    />
+    <!-- Fonts and icons -->
+    <script src="{% static 'adm_home/assets/js/plugin/webfont/webfont.min.js' %}"></script>
+    <script>
+      WebFont.load({
+        google: { families: ["Public Sans:300,400,500,600,700"] },
+        custom: {
+          families: [
+            "Font Awesome 5 Solid",
+            "Font Awesome 5 Regular",
+            "Font Awesome 5 Brands",
+            "simple-line-icons",
+          ],
+          urls: ["{% static 'adm_home/assets/css/fonts.min.css' %}"],
+        },
+        active: function () {
+          sessionStorage.fonts = true;
+        },
+      });
+    </script>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="{% static 'adm_home/assets/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'adm_home/assets/css/plugins.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'adm_home/assets/css/kaiadmin.min.css' %}" />
+
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link rel="stylesheet" href="{% static 'adm_home/assets/css/demo.css' %}" />
+      <link rel="stylesheet" href="{% static 'adm_home/tabble/css/style.css' %}">
+      <link rel="stylesheet" href="{% static 'adm_home/tabble/css/style.css' %}">
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- Sidebar -->
+      <div class="sidebar" data-background-color="dark">
+        <div class="sidebar-logo">
+          <!-- Logo Header -->
+          <div class="logo-header" data-background-color="dark">
+            <span class="item" style="font-family: 'Arial', sans-serif; font-size: 18px; font-weight: bold; color: white;">Admin</span>
+            <div class="nav-toggle">
+              <button class="btn btn-toggle toggle-sidebar">
+                <i class="gg-menu-right"></i>
+              </button>
+              <button class="btn btn-toggle sidenav-toggler">
+                <i class="gg-menu-left"></i>
+              </button>
+            </div>
+            <button class="topbar-toggler more">
+              <i class="gg-more-vertical-alt"></i>
+            </button>
+          </div>
+          <!-- End Logo Header -->
+        </div>
+        <div class="sidebar-wrapper scrollbar scrollbar-inner">
+          <div class="sidebar-content">
+            <ul class="nav nav-secondary">
+              <li class="nav-item">
+  <a href="{% url 'admin_home' %}">
+    <i class="fas fa-home"></i>
+    <p>Dashboard</p>
+  </a>
+</li>
+              <li class="nav-item">
+  <a href="{% url 'block' %}">
+    <i class="fas fa-address-book"></i>
+    <p>Manage Users</p>
+  </a>
+</li>
+<li class="nav-item">
+  <a href="{% url 'cat_admin' %}">
+    <i class="fas fa-layer-group"></i>
+    <p>Courses</p>
+  </a>
+</li>
+<li class="nav-item">
+  <a href="{% url 'upl_cer' %}">
+    <i class="fas fa-upload"></i>
+    <p>Upload</p>
+  </a>
+</li>
+<li class="nav-item">
+  <a href="{% url 'message' %}">
+    <i class="fa fa-envelope"></i>
+    <p>Message</p>
+  </a>
+</li>
+<li class="nav-item">
+  <a href="{% url 'update_pr_adm' %}">
+    <i class="fas fa-user-circle"></i>
+    <p>Update Profile</p>
+  </a>
+</li>
+<li class="nav-item">
+  <a href="{% url 'reports' %}">
+    <i class="fas fa-file"></i>
+    <p>Reports</p>
+  </a>
+</li>
+<li class="nav-item">
+  <a href="{% url 'logout' %}">
+    <i class="fas fa-sign-out-alt"></i>
+    <p>Logout</p>
+  </a>
+</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- End Sidebar -->
+
+      <div class="main-panel">
+        <div class="main-header">
+          <div class="main-header-logo">
+            <!-- Logo Header -->
+            <div class="logo-header" data-background-color="dark">
+              <a href="index.html" class="logo">
+                <img
+                  src="{% static 'adm_home/assets/img/kaiadmin/logo_light.svg' %}"
+                  alt="navbar brand"
+                  class="navbar-brand"
+                  height="20"
+                />
+              </a>
+              <div class="nav-toggle">
+                <button class="btn btn-toggle toggle-sidebar">
+                  <i class="gg-menu-right"></i>
+                </button>
+                <button class="btn btn-toggle sidenav-toggler">
+                  <i class="gg-menu-left"></i>
+                </button>
+              </div>
+              <button class="topbar-toggler more">
+                <i class="gg-more-vertical-alt"></i>
+              </button>
+            </div>
+            <!-- End Logo Header -->
+          </div>
+          <!-- Navbar Header -->
+          <nav
+            class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom"
+          >
+            <div class="container-fluid">
+              <nav
+                class="navbar navbar-header-left navbar-expand-lg navbar-form nav-search p-0 d-none d-lg-flex"
+              >
+
+              </nav>
+
+              <ul class="navbar-nav topbar-nav ms-md-auto align-items-center">
+
+                <li class="nav-item topbar-icon dropdown hidden-caret">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="{% url 'message' %}"
+
+                  >
+                    <i class="fa fa-envelope"></i>
+                  </a>
+                </li>
+                   <li class="nav-item topbar-icon dropdown hidden-caret">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="{% url 'cat_admin' %}"
+
+                  >
+                    <i class="fas fa-layer-group"></i>
+                  </a>
+                </li>
+
+               <li class="nav-item topbar-icon dropdown hidden-caret">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="{% url 'upl_cer' %}"
+
+                  >
+                    <i class="fas fa-upload"></i>
+                  </a>
+                </li>
+
+              </ul>
+            </div>
+          </nav>
+          <!-- End Navbar -->
+        </div>
+
+        <div class="container">
+          <div class="page-inner">
+<section class="ftco-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 text-center mb-5">
+        <h2 class="heading-section">MANAGE USERS</h2>
+      </div>
+
+      <div style="color:blue;" align="center">
+        {% if messages %}
+          {% for msg in messages %}
+            {{ msg }}
+          {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+
+    <center>
+      <button type="submit" onclick="loadd_s()">Students</button>&nbsp;&nbsp;&nbsp;
+      <button type="submit" onclick="loadd_t()">Teachers</button>
+    </center><br><br>
+
+    {% if t_reg %}
+    <div id="tt_tt">
+      <h2 class="heading-section">TEACHERS</h2>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="table-wrap">
+            <table class="table table-bordered table-hover">
+             <thead>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Registration date</th>
+    <th>Qualification</th>
+    <th>Image</th>
+    <th>Status</th>
+    <th>Block</th>
+    <th>Allow</th>
+  </tr>
+</thead>
+              <tbody>
+  {% for i in t_reg %}
+  <tr>
+    <td>{{ i.user.first_name }} {{ i.user.last_name }}</td>
+    <td>{{ i.user.email }}</td>
+    <td>{{ i.Registration_date }}</td>
+    <td>{{ i.Qualification }}</td>
+    <td><img src="/media/{{ i.Image }}" alt="No image" height="100px" width="100px" /></td>
+    <td>
+      {% if i.User_role != 'teacher_blocked' %}Allowed{% else %}Blocked{% endif %}
+    </td>
+    <td>
+      <button onclick="location.href='{% url 'blocks' i.id %}'">Block</button>
+    </td>
+    <td>
+      <button onclick="location.href='{% url 'allows' i.id %}'">Allow</button>
+    </td>
+  </tr>
+  {% endfor %}
+</tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% else %}
+      <h4 align="center" style="color:blue">No teachers available</h4>
+    {% endif %}
+
+    {% if s_reg %}
+    <div id="ss_ss" style="display: none;">
+      <h2 class="heading-section">STUDENTS</h2>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="table-wrap">
+            <table class="table table-bordered table-hover">
+              <thead>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Registration date</th>
+    <th>Courses Enrolled</th>
+    <th>Courses Completed</th>
+    <th>Image</th>
+    <th>Status</th>
+    <th>Block</th>
+    <th>Allow</th>
+  </tr>
+</thead>
+
+              <tbody>
+  {% for i in s_reg %}
+  <tr>
+    <td>{{ i.user.first_name }} {{ i.user.last_name }}</td>
+    <td>{{ i.user.email }}</td>
+    <td>{{ i.Registration_date }}</td>
+    <td>{{ i.Num_of_courses_enrolled }}</td>
+    <td>{{ i.Num_of_courses_completed }}</td>
+    <td><img src="/media/{{ i.Image }}" alt="No image" height="100px" width="100px" /></td>
+    <td>
+      {% if i.User_role != 'student_blocked' %}Allowed{% else %}Blocked{% endif %}
+    </td>
+    <td>
+      <button onclick="location.href='{% url 'blocks1' i.id %}'">Block</button>
+    </td>
+    <td>
+      <button onclick="location.href='{% url 'allows1' i.id %}'">Allow</button>
+    </td>
+  </tr>
+  {% endfor %}
+</tbody>
+
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% else %}
+      <h4 align="center" style="color:blue">No students available</h4>
+    {% endif %}
+
+    <br><br>
+    <div align="center">
+      <button type="submit" onclick="location.href='{% url 'admin_home' %}'">Back</button>
+    </div>
+  </div>
+</section>
+
+<script>
+  function loadd_s() {
+    document.getElementById("ss_ss").style.display = "block";
+    document.getElementById("tt_tt").style.display = "none";
+  }
+
+  function loadd_t() {
+    document.getElementById("ss_ss").style.display = "none";
+    document.getElementById("tt_tt").style.display = "block";
+  }
+</script>
+
+          </div>
+        </div>
+
+        <footer class="footer">
+          <div class="container-fluid d-flex justify-content-between">
+            <nav class="pull-left">
+            </nav>
+            <div class="copyright">
+              LearnHive
+            </div>
+            <div>
+              Educational Portal
+              <a href="#">LearnHive</a>.
+            </div>
+          </div>
+        </footer>
+      </div>
+
+      <!-- End Custom template -->
+    </div>
+    <!--   Core JS Files   -->
+    <script src="{% static 'adm_home/assets/js/core/jquery-3.7.1.min.js' %}"></script>
+    <script src="{% static 'adm_home/assets/js/core/popper.min.js' %}"></script>
+    <script src="{% static 'adm_home/assets/js/core/bootstrap.min.js' %}"></script>
+
+    <!-- jQuery Scrollbar -->
+    <script src="{% static 'adm_home/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js' %}"></script>
+
+    <!-- Chart JS -->
+    <script src="{% static 'adm_home/assets/js/plugin/chart.js/chart.min.js' %}"></script>
+
+    <!-- jQuery Sparkline -->
+    <script src="{% static 'adm_home/assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js' %}"></script>
+
+    <!-- Chart Circle -->
+    <script src="{% static 'adm_home/assets/js/plugin/chart-circle/circles.min.js' %}"></script>
+
+    <!-- Datatables -->
+    <script src="{% static 'adm_home/assets/js/plugin/datatables/datatables.min.js' %}"></script>
+
+    <!-- jQuery Vector Maps -->
+    <script src="assets/js/plugin/jsvectormap/jsvectormap.min.js"></script>
+    <script src="assets/js/plugin/jsvectormap/world.js"></script>
+
+    <!-- Sweet Alert -->
+    <script src="{% static 'adm_home/assets/js/plugin/sweetalert/sweetalert.min.js' %}"></script>
+
+    <!-- Kaiadmin JS -->
+    <script src="{% static 'adm_home/assets/js/kaiadmin.min.js' %}"></script>
+
+    <!-- Kaiadmin DEMO methods, don't include it in your project! -->
+    <script src="{% static 'adm_home/assets/js/setting-demo.js' %}"></script>
+    <script src="{% static 'adm_home/assets/js/demo.js' %}"></script>
+    <script src="{% static 'adm_home/tabble/js/jquery.min.js' %}"></script>
+<script src="{% static 'adm_home/tabble/js/popper.js' %}"></script>
+<script src="{% static 'adm_home/tabble/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'adm_home/tabble/js/main.js' %}"></script>
+
+    <script>
+      $("#lineChart").sparkline([102, 109, 120, 99, 110, 105, 115], {
+        type: "line",
+        height: "70",
+        width: "100%",
+        lineWidth: "2",
+        lineColor: "#177dff",
+        fillColor: "rgba(23, 125, 255, 0.14)",
+      });
+
+      $("#lineChart2").sparkline([99, 125, 122, 105, 110, 124, 115], {
+        type: "line",
+        height: "70",
+        width: "100%",
+        lineWidth: "2",
+        lineColor: "#f3545d",
+        fillColor: "rgba(243, 84, 93, .14)",
+      });
+
+      $("#lineChart3").sparkline([105, 103, 123, 100, 95, 105, 115], {
+        type: "line",
+        height: "70",
+        width: "100%",
+        lineWidth: "2",
+        lineColor: "#ffa534",
+        fillColor: "rgba(255, 165, 52, .14)",
+      });
+    </script>
+  </body>
+</html>

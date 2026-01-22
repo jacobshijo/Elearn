@@ -1,0 +1,128 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Booked Details</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 4 & Font Awesome -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Custom CSS -->
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f8f9fa;
+      padding-top: 40px;
+    }
+
+    .heading-section {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 30px;
+      color: #343a40;
+    }
+
+    .table thead th {
+      background-color: #343a40;
+      color: #fff;
+    }
+
+    .table tbody tr:hover {
+      background-color: transparent !important;
+    }
+
+    .btn-custom {
+      min-width: 90px;
+      margin: 4px;
+    }
+
+    .message {
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .table td, .table th {
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+
+<section class="container">
+  <div class="text-center">
+    <h2 class="heading-section">STUDENT BOOKED DETAILS</h2>
+
+    {% if messages %}
+      <div class="message text-primary">
+        {% for msg in messages %}
+          {{ msg }}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+
+  {% if stzz %}
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Student Name</th>
+            <th>Email</th>
+            <th>Subject</th>
+            <th>Course</th>
+            <th>Pending Days</th>
+            <th>Enrollment Date</th>
+            <th>Paid?</th>
+            <th>Response</th>
+            <th colspan="4" class="text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in stzz %}
+          <tr>
+            <td>{{ i.enrol_reg.user.first_name }} {{ i.enrol_reg.user.last_name }}</td>
+            <td>{{ i.enrol_reg.user.email }}</td>
+            <td>{{ i.enrol_cou.cou_cat.Category_title }}</td>
+            <td>{{ i.enrol_cou.Course_title }}</td>
+            <td>{{ i.Pending_days }}</td>
+            <td>{{ i.Enrollment_date }}</td>
+            <td>
+              {% if i.Payment_status %}
+                {{ i.Payment_status }}
+              {% else %}
+                Not paid
+              {% endif %}
+            </td>
+            <td>{{ i.Teacher_response }}</td>
+            <td><button class="btn btn-sm btn-info btn-custom" onclick="location.href='{% url 'stu_accept' i.id %}'">Accept</button></td>
+            <td><button class="btn btn-sm btn-info btn-custom" onclick="location.href='{% url 'stu_reject' i.id %}'">Reject</button></td>
+            <td><button class="btn btn-sm btn-info btn-custom" onclick="location.href='{% url 'stu_delete' i.id %}'">Delete</button></td>
+            <td><button class="btn btn-sm btn-info btn-custom" onclick="location.href='{% url 'stu_approve' i.id %}'">Approve</button></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <h5 class="text-center text-primary">No students booked yet</h5>
+  {% endif %}
+
+  <div class="text-center mt-4">
+    <button class="btn btn-dark btn-custom" onclick="location.href='{% url 'teacher_home' %}'">Back</button>
+  </div>
+</section>
+
+<!-- JS -->
+<script src="{% static 'tea_home/js/jquery.min.js' %}"></script>
+<script src="{% static 'tea_home/js/popper.js' %}"></script>
+<script src="{% static 'tea_home/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'tea_home/js/main.js' %}"></script>
+
+</body>
+</html>

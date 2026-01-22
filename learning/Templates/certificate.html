@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Provide Course Certificate</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            width: 50%;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px gray;
+        }
+        h2 {
+            color: #333;
+        }
+        select, button {
+            width: 80%;
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+            border: none;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .message {
+            font-size: 16px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Provide Course Certificate</h2>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="students">Select Approved Student:</label>
+            <select name="enrollment_id" id="students">
+                <option value="">-- Select Student --</option>
+                {% for enrollment in var %}
+                    <option value="{{ enrollment.id }}">{{ enrollment.enrol_reg.user.first_name }} - {{ enrollment.enrol_cou.Course_title}}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <label for="certificate">Upload Certificate:</label>
+            <input type="file" name="certificate" required>
+            <br>
+            <button type="submit">Save</button>
+        </form>
+
+        {% if message %}
+            <p class="message" style="color: green;">{{ message }}</p>
+        {% endif %}
+    </div>
+
+</body>
+</html>

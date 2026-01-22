@@ -1,0 +1,445 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Admin Home</title>
+    <meta
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+      name="viewport"
+    />
+    <!-- Fonts and icons -->
+    <script src="{% static 'adm_home/assets/js/plugin/webfont/webfont.min.js' %}"></script>
+    <script>
+      WebFont.load({
+        google: { families: ["Public Sans:300,400,500,600,700"] },
+        custom: {
+          families: [
+            "Font Awesome 5 Solid",
+            "Font Awesome 5 Regular",
+            "Font Awesome 5 Brands",
+            "simple-line-icons",
+          ],
+          urls: ["{% static 'adm_home/assets/css/fonts.min.css' %}"],
+        },
+        active: function () {
+          sessionStorage.fonts = true;
+        },
+      });
+    </script>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="{% static 'adm_home/assets/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'adm_home/assets/css/plugins.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'adm_home/assets/css/kaiadmin.min.css' %}" />
+
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link rel="stylesheet" href="{% static 'adm_home/assets/css/demo.css' %}" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- Sidebar -->
+      <div class="sidebar" data-background-color="dark">
+        <div class="sidebar-logo">
+          <!-- Logo Header -->
+          <div class="logo-header" data-background-color="dark">
+            <span class="item" style="font-family: 'Arial', sans-serif; font-size: 18px; font-weight: bold; color: white;">Admin</span>
+            <div class="nav-toggle">
+              <button class="btn btn-toggle toggle-sidebar">
+                <i class="gg-menu-right"></i>
+              </button>
+              <button class="btn btn-toggle sidenav-toggler">
+                <i class="gg-menu-left"></i>
+              </button>
+            </div>
+            <button class="topbar-toggler more">
+              <i class="gg-more-vertical-alt"></i>
+            </button>
+          </div>
+          <!-- End Logo Header -->
+        </div>
+        <div class="sidebar-wrapper scrollbar scrollbar-inner">
+          <div class="sidebar-content">
+            <ul class="nav nav-secondary">
+              <li class="nav-item">
+  <a href="{% url 'admin_home' %}">
+    <i class="fas fa-home"></i>
+    <p>Dashboard</p>
+  </a>
+</li>
+              <li class="nav-item">
+  <a href="{% url 'block' %}">
+    <i class="fas fa-address-book"></i>
+    <p>Manage Users</p>
+  </a>
+</li>
+<li class="nav-item">
+  <a href="{% url 'cat_admin' %}">
+    <i class="fas fa-layer-group"></i>
+    <p>Courses</p>
+  </a>
+</li>
+<li class="nav-item">
+  <a href="{% url 'upl_cer' %}">
+    <i class="fas fa-upload"></i>
+    <p>Upload</p>
+  </a>
+</li>
+<li class="nav-item">
+  <a href="{% url 'message' %}">
+    <i class="fa fa-envelope"></i>
+    <p>Message</p>
+  </a>
+</li>
+<li class="nav-item">
+  <a href="{% url 'update_pr_adm' %}">
+    <i class="fas fa-user-circle"></i>
+    <p>Update Profile</p>
+  </a>
+</li>
+<li class="nav-item">
+  <a href="{% url 'reports' %}">
+    <i class="fas fa-file"></i>
+    <p>Reports</p>
+  </a>
+</li>
+<li class="nav-item">
+  <a href="{% url 'logout' %}" >
+    <i class="fas fa-sign-out-alt"></i>
+    <p>Logout</p>
+  </a>
+</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- End Sidebar -->
+
+      <div class="main-panel">
+        <div class="main-header">
+          <div class="main-header-logo">
+            <!-- Logo Header -->
+            <div class="logo-header" data-background-color="dark">
+              <a href="index.html" class="logo">
+                <img
+                  src="{% static 'adm_home/assets/img/kaiadmin/logo_light.svg' %}"
+                  alt="navbar brand"
+                  class="navbar-brand"
+                  height="20"
+                />
+              </a>
+              <div class="nav-toggle">
+                <button class="btn btn-toggle toggle-sidebar">
+                  <i class="gg-menu-right"></i>
+                </button>
+                <button class="btn btn-toggle sidenav-toggler">
+                  <i class="gg-menu-left"></i>
+                </button>
+              </div>
+              <button class="topbar-toggler more">
+                <i class="gg-more-vertical-alt"></i>
+              </button>
+            </div>
+            <!-- End Logo Header -->
+          </div>
+          <!-- Navbar Header -->
+          <nav
+            class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom"
+          >
+            <div class="container-fluid">
+              <nav
+                class="navbar navbar-header-left navbar-expand-lg navbar-form nav-search p-0 d-none d-lg-flex"
+              >
+
+              </nav>
+
+              <ul class="navbar-nav topbar-nav ms-md-auto align-items-center">
+
+                <li class="nav-item topbar-icon dropdown hidden-caret">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="{% url 'message' %}"
+
+                  >
+                    <i class="fa fa-envelope"></i>
+                  </a>
+                </li>
+                   <li class="nav-item topbar-icon dropdown hidden-caret">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="{% url 'cat_admin' %}"
+
+                  >
+                    <i class="fas fa-layer-group"></i>
+                  </a>
+                </li>
+
+               <li class="nav-item topbar-icon dropdown hidden-caret">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="{% url 'upl_cer' %}"
+
+                  >
+                    <i class="fas fa-upload"></i>
+                  </a>
+                </li>
+                <li class="nav-item topbar-user dropdown hidden-caret">
+    <a class="profile-pic" href="{% url 'update_pr_adm' %}">
+        <div class="avatar-sm">
+            {% if admin_profile and admin_profile.Image %}
+                <img src="{{ admin_profile.Image.url }}" alt="Profile Image" class="avatar-img rounded-circle">
+            {% else %}
+                <img src="{% static 'adm_home/assets/img/default-profile.jpg' %}" alt="Default Profile" class="avatar-img rounded-circle">
+            {% endif %}
+        </div>
+        <span class="profile-username">
+            <span class="op-7">Hi,</span>
+            <span class="fw-bold">Admin</span>
+        </span>
+    </a>
+</li>
+              </ul>
+            </div>
+          </nav>
+          <!-- End Navbar -->
+        </div>
+
+        <div class="container">
+          <div class="page-inner">
+            <div
+              class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4"
+            >
+              <div>
+                <h3 class="fw-bold mb-3">Dashboard</h3>
+              </div>
+              <div class="ms-md-auto py-2 py-md-0">
+                <a href="{% url 'block' %}" class="btn btn-label-info btn-round me-2">Manage</a>
+                <a href="{% url 'logout' %}" class="btn btn-primary" onclick="return confirm('Are you sure')">Logout</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6 col-md-3">
+                <div class="card card-stats card-round">
+                  <div class="card-body">
+                    <div class="row align-items-center">
+                      <div class="col-icon">
+                        <div
+                          class="icon-big text-center icon-primary bubble-shadow-small"
+                        >
+                          <i class="fas fa-user-check"></i>
+                        </div>
+                      </div>
+                     <div class="col col-stats ms-3 ms-sm-0">
+    <div class="numbers">
+        <p class="card-category">Categories</p>
+        <h4 class="card-title">{{ category_count }}</h4> <!-- Dynamic category count -->
+    </div>
+</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          <div class="col-sm-6 col-md-3">
+    <div class="card card-stats card-round">
+        <div class="card-body">
+            <div class="row align-items-center">
+                <div class="col-icon">
+                    <div class="icon-big text-center icon-info bubble-shadow-small">
+                        <i class="fas fa-users"></i>
+                    </div>
+                </div>
+                <div class="col col-stats ms-3 ms-sm-0">
+                    <div class="numbers">
+                        <p class="card-category">Teachers</p>
+                        <h4 class="card-title">{{ teacher_count }}</h4> <!-- Dynamic count -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+              <div class="col-sm-6 col-md-3">
+    <div class="card card-stats card-round">
+        <div class="card-body">
+            <div class="row align-items-center">
+                <div class="col-icon">
+                    <div class="icon-big text-center icon-success bubble-shadow-small">
+                        <i class="fas fa-user-graduate"></i> <!-- Changed icon for students -->
+                    </div>
+                </div>
+                <div class="col col-stats ms-3 ms-sm-0">
+                    <div class="numbers">
+                        <p class="card-category">Students</p>
+                        <h4 class="card-title">{{ student_count }}</h4> <!-- Dynamic count -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+             <div class="col-sm-6 col-md-3">
+    <div class="card card-stats card-round">
+        <div class="card-body">
+            <div class="row align-items-center">
+                <div class="col-icon">
+                    <div class="icon-big text-center icon-success bubble-shadow-small">
+                        <i class="fas fa-user-graduate"></i> <!-- Changed icon for students -->
+                    </div>
+                </div>
+                <div class="col col-stats ms-3 ms-sm-0">
+                    <div class="numbers">
+                        <p class="card-category">Courses</p>
+                        <h4 class="card-title">{{ course_count }}</h4> <!-- Dynamic count -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            </div>
+            <div class="card-body">
+    <h4 class="mb-3 fw-bold">Users</h4> <!-- Heading for Users -->
+    <div class="card-list py-4">
+        {% for user in users %}
+        <div class="item-list">
+            <div class="avatar">
+                {% if user.Image %}
+                    <img src="{{ user.Image.url }}" alt="Profile Image" class="avatar-img rounded-circle">
+                {% else %}
+                    <span class="avatar-title rounded-circle border border-white bg-primary">
+                        {{ user.user.username|first }}
+                    </span>
+                {% endif %}
+            </div>
+            <div class="info-user ms-3">
+                <div class="username">{{ user.user.username }}</div>
+                <div class="status">{{ user.User_role }}</div>
+            </div>
+<a href="{% url 'block'%}" class="btn btn-icon btn-link op-8 me-1">
+    <i class="far fa-envelope"></i>
+</a>
+<a href="{% url 'block'%}" class="btn btn-icon btn-link btn-danger op-8">
+    <i class="fas fa-ban"></i>
+</a>
+
+        </div>
+        {% empty %}
+        <p>No users found.</p>
+        {% endfor %}
+    </div>
+</div>
+<div class="col-md-8">
+    <div class="card card-round">
+     <div class="card-body">
+    <h4 class="mb-3 fw-bold">Categories</h4> <!-- Heading for Categories -->
+    <div class="card-list py-4">
+        {% for category in categories %}
+        <div class="item-list">
+            <div class="avatar">
+                {% if category.Image %}
+                    <img src="{{ category.Image.url }}" alt="{{ category.Category_title }}" class="avatar-img rounded-circle">
+                {% else %}
+                    <span class="avatar-title rounded-circle border border-white bg-primary">
+                        {{ category.Category_title|first }}
+                    </span>
+                {% endif %}
+            </div>
+            <div class="info-user ms-3">
+                <div class="username">{{ category.Category_title }}</div>
+            </div>
+        </div>
+        {% empty %}
+        <p>No categories available.</p>
+        {% endfor %}
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+          </div>
+        </div>
+
+        <footer class="footer">
+          <div class="container-fluid d-flex justify-content-between">
+            <nav class="pull-left">
+            </nav>
+            <div class="copyright">
+              LearnHive
+            </div>
+            <div>
+              Educational Portal
+              <a href="#">LearnHive</a>.
+            </div>
+          </div>
+        </footer>
+      </div>
+
+      <!-- End Custom template -->
+    </div>
+    <!--   Core JS Files   -->
+    <script src="{% static 'adm_home/assets/js/core/jquery-3.7.1.min.js' %}"></script>
+    <script src="{% static 'adm_home/assets/js/core/popper.min.js' %}"></script>
+    <script src="{% static 'adm_home/assets/js/core/bootstrap.min.js' %}"></script>
+
+    <!-- jQuery Scrollbar -->
+    <script src="{% static 'adm_home/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js' %}"></script>
+
+    <!-- Chart JS -->
+    <script src="{% static 'adm_home/assets/js/plugin/chart.js/chart.min.js' %}"></script>
+
+    <!-- jQuery Sparkline -->
+    <script src="{% static 'adm_home/assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js' %}"></script>
+
+    <!-- Chart Circle -->
+    <script src="{% static 'adm_home/assets/js/plugin/chart-circle/circles.min.js' %}"></script>
+
+    <!-- Datatables -->
+    <script src="{% static 'adm_home/assets/js/plugin/datatables/datatables.min.js' %}"></script>
+
+    <!-- jQuery Vector Maps -->
+    <script src="assets/js/plugin/jsvectormap/jsvectormap.min.js"></script>
+    <script src="assets/js/plugin/jsvectormap/world.js"></script>
+
+    <!-- Sweet Alert -->
+    <script src="{% static 'adm_home/assets/js/plugin/sweetalert/sweetalert.min.js' %}"></script>
+
+    <!-- Kaiadmin JS -->
+    <script src="{% static 'adm_home/assets/js/kaiadmin.min.js' %}"></script>
+
+    <!-- Kaiadmin DEMO methods, don't include it in your project! -->
+    <script src="{% static 'adm_home/assets/js/setting-demo.js' %}"></script>
+    <script src="{% static 'adm_home/assets/js/demo.js' %}"></script>
+    <script>
+      $("#lineChart").sparkline([102, 109, 120, 99, 110, 105, 115], {
+        type: "line",
+        height: "70",
+        width: "100%",
+        lineWidth: "2",
+        lineColor: "#177dff",
+        fillColor: "rgba(23, 125, 255, 0.14)",
+      });
+
+      $("#lineChart2").sparkline([99, 125, 122, 105, 110, 124, 115], {
+        type: "line",
+        height: "70",
+        width: "100%",
+        lineWidth: "2",
+        lineColor: "#f3545d",
+        fillColor: "rgba(243, 84, 93, .14)",
+      });
+
+      $("#lineChart3").sparkline([105, 103, 123, 100, 95, 105, 115], {
+        type: "line",
+        height: "70",
+        width: "100%",
+        lineWidth: "2",
+        lineColor: "#ffa534",
+        fillColor: "rgba(255, 165, 52, .14)",
+      });
+    </script>
+  </body>
+</html>
